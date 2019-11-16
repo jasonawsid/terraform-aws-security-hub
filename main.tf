@@ -35,7 +35,7 @@ resource aws_config_delivery_channel security_hub_delivery_channel {
 }
 
 module aws_config_bucket {
-  source = "github.com/joshuarose/terraform-aws-secure-s3-bucket?ref=0.0.1"
+  source = "github.com/pgalchemy/terraform-aws-secure-s3-bucket?ref=0.0.1"
   bucket_name = var.bucket_name
   custom_policy = templatefile("${path.module}/templates/json/bucketPolicy.json", {
     account_number = var.account_number,

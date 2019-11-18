@@ -13,3 +13,8 @@ variable account_number {
   type        = string
   description = "The AWS account ID"
 }
+
+variable master_account_number {
+  type        = string
+  description = "The AWS account ID associated with the account to share security hub with"
+}

@@ -15,6 +15,6 @@ module security_hub {
   source                = "../../"
   namespace             = "terratest"
   bucket_name           = "terratest-aws-config-testing-bucket-josh"
-  account_number        = "REPLACEME"
-  master_account_number = "REPLACEME"
+  account_number        = "REPLACE_ME"
+  master_account_number = "REPLACE_ME"
 }

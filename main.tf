@@ -2,20 +2,9 @@ terraform {
   required_version = "= 0.12.13"
 }
 
-resource aws_iam_role aws_config_role {
-  name               = "${var.namespace}_aws_config_security_hub_role"
-  assume_role_policy = file("${path.module}/templates/json/role.json")
-}
-
-resource aws_iam_role_policy aws_config_role_policy {
-  name   = "aws_config_role_policy"
-  role   = aws_iam_role.aws_config_role.name
-  policy = file("${path.module}/templates/json/policy.json")
-}
-
 resource aws_config_configuration_recorder config_recorder {
   name     = "${var.namespace}_aws_config_recorder"
-  role_arn = aws_iam_role.aws_config_role.arn
+  role_arn = "arn:aws:iam::${var.account_number}:role/aws-service-role/config.amazonaws.com/AWSServiceRoleForConfig"
   recording_group {
     all_supported                 = true
     include_global_resource_types = true
@@ -71,8 +60,4 @@ resource null_resource invitation_accepter {
   depends_on = [
     data.local_file.invitation_file
   ]
-}
-
-output aws_cli_output {
-  value = "${data.local_file.invitation_file.content}"
 }

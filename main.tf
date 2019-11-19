@@ -1,5 +1,9 @@
+
 terraform {
-  required_version = "= 0.12.13"
+  required_version = ">= 0.12"
+  required_providers {
+    aws = ">= 2.35.0"
+  }
 }
 
 resource aws_config_configuration_recorder config_recorder {
